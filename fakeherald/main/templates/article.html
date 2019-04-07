@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Fake Herald{% endblock %}
+{% block content %}
+	<div class="container flex">
+		<div class="row">
+			<div class="col-2"></div>
+			<div class="col-8">
+				<h2>{{article.title}}</h2>
+				<h4>{{article.author.name}}</h4>
+				<h4>{{article.pub_date}}</h4>
+				<p>{{article.content}}</p>
+				
+
+				{% for comment in article.comment_set.all %}
+					{{comment.text}}
+				{% endfor %}
+					<form method="POST">
+						<div class="form-group">
+							<label for="comment_text">Share your throughts:</label>
+							<textarea class="form-control" id="comment_text" rows="3"></textarea>
+						</div>
+						<button class="btn btn-md btn-secondary" type="submit">Submit</button>
+					</form>
+				
+			</div>
+			<div class="col-2"></div>
+		</div>
+		
+	</div>
+{% endblock %}
